@@ -5,6 +5,8 @@ import { Post } from "./components/Post";
 import styles from "./App.module.css";
 import "./global.css";
 
+import { posts } from "./util/mockedPostData";
+
 function App() {
   return (
     <section>
@@ -12,8 +14,16 @@ function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post author="Faran" content="Batata Prime from mother Lotus" />
-          <Post author="Batata" content="Clem! Clem! Clem!" />
+          {posts.map((post) => {
+            return (
+              <Post
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
         </main>
       </div>
     </section>
